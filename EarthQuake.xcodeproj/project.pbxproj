@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E7610902617D14E00557B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76108F2617D14E00557B13 /* AppDelegate.swift */; };
-		2E7610922617D14E00557B13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7610912617D14E00557B13 /* SceneDelegate.swift */; };
 		2E7610942617D14E00557B13 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7610932617D14E00557B13 /* ViewController.swift */; };
 		2E7610972617D14E00557B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7610952617D14E00557B13 /* Main.storyboard */; };
 		2E7610992617D15000557B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7610982617D15000557B13 /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		2E76108C2617D14E00557B13 /* EarthQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E76108F2617D14E00557B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2E7610912617D14E00557B13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2E7610932617D14E00557B13 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2E7610962617D14E00557B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E7610982617D15000557B13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				2E76108F2617D14E00557B13 /* AppDelegate.swift */,
-				2E7610912617D14E00557B13 /* SceneDelegate.swift */,
 				2E7610932617D14E00557B13 /* ViewController.swift */,
 				2E7610952617D14E00557B13 /* Main.storyboard */,
 				2E7610982617D15000557B13 /* Assets.xcassets */,
@@ -139,7 +136,6 @@
 			files = (
 				2E7610942617D14E00557B13 /* ViewController.swift in Sources */,
 				2E7610902617D14E00557B13 /* AppDelegate.swift in Sources */,
-				2E7610922617D14E00557B13 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = EarthQuake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MCRTE5CC2K;
 				INFOPLIST_FILE = EarthQuake/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
