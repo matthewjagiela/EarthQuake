@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let apiHandler = APIHandler()
+        apiHandler.fetchEarthQuakeData()
+        print("This should come after the data print")
     }
 
 
