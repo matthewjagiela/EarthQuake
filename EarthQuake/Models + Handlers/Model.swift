@@ -48,13 +48,15 @@ class Geometry: Decodable {
 
 // MARK: - Properties
 class Properties: Decodable {
+    var mag: Double
     var place: String
     var time: Int
     var url: String
     var title: String
     var alert: String?
     
-    init(place: String, time: Int, url: String, title: String, alert: String?) {
+    init(mag: Double, place: String, time: Int, url: String, title: String, alert: String?) {
+        self.mag = mag
         self.place = place
         self.time = time
         self.url = url
