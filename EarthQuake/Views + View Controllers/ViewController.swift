@@ -13,15 +13,25 @@ protocol ViewControllerDelegate: class {
 class ViewController: UIViewController {
 
     var data: [Feature]?
+    var refreshControl = UIRefreshControl()
+    let apiHandler = APIHandler()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let apiHandler = APIHandler()
         data = apiHandler.fetchEarthQuakeData()
         print("This should come after the data print")
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
+        refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @objc func pullToRefresh(_ sender: AnyObject) {
+        data = apiHandler.fetchEarthQuakeData()
+        refreshControl.endRefreshing()
+        
     }
     
 }
