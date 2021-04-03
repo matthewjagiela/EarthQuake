@@ -13,6 +13,7 @@
 		2E7610992617D15000557B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7610982617D15000557B13 /* Assets.xcassets */; };
 		2E76109C2617D15000557B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E76109A2617D15000557B13 /* LaunchScreen.storyboard */; };
 		2E7610BB2617D60800557B13 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7610BA2617D60800557B13 /* APIHandler.swift */; };
+		2E7E26182617DCF9009F3975 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E26172617DCF9009F3975 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2E76109B2617D15000557B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E76109D2617D15000557B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E7610BA2617D60800557B13 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		2E7E26172617DCF9009F3975 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				2E7610BA2617D60800557B13 /* APIHandler.swift */,
+				2E7E26172617DCF9009F3975 /* Model.swift */,
 			);
 			path = "Models + Handlers";
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				2E7610BB2617D60800557B13 /* APIHandler.swift in Sources */,
 				2E7610942617D14E00557B13 /* ViewController.swift in Sources */,
 				2E7610902617D14E00557B13 /* AppDelegate.swift in Sources */,
+				2E7E26182617DCF9009F3975 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

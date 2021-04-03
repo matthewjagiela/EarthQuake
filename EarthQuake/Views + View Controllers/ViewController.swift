@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let apiHandler = APIHandler()
-        apiHandler.fetchEarthQuakeData()
+        print(apiHandler.fetchEarthQuakeData()?[0].properties.title)
         print("This should come after the data print")
     }
 
