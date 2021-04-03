@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Network
 
 class EarthquakeHomeViewModel {
     private var earthQuakeData: [Feature]?
     private let api = APIHandler()
+    let queue = DispatchQueue(label: "Monitor")
+    let monitor = NWPathMonitor()
     weak var homeDelegate: EarthquakeViewControllerDelegate?
     
     init(homeDelegate: EarthquakeViewControllerDelegate? = nil) {
@@ -17,19 +20,27 @@ class EarthquakeHomeViewModel {
     }
     
     func fetchData() {
-        let errorMessage = "We Could Not Fetch Data At This Time"
-        api.fetchEarthQuakeData { (success, features) in
-            if success != true {
-                self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
-            } else {
-                guard let features = features else {
-                    self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
-                    return
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                let errorMessage = "We Could Not Fetch Data At This Time"
+                self.api.fetchEarthQuakeData { (success, features) in
+                    if success != true {
+                        self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
+                    } else {
+                        guard let features = features else {
+                            self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
+                            return
+                        }
+                        self.earthQuakeData = features
+                        self.homeDelegate?.refreshTableView()
+                    }
                 }
-                self.earthQuakeData = features
-                self.homeDelegate?.refreshTableView()
+            } else {
+                self.homeDelegate?.showErrorAlert(title: "No Internet", message: "Your device current is not connected to the internet. When your device comes back online we will refresh the data for you.")
             }
+            
         }
+        monitor.start(queue: queue)
     }
     
     func numberOfItems() -> Int {

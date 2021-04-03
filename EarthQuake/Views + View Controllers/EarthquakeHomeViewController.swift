@@ -36,7 +36,9 @@ class EarthquakeHomeViewController: UIViewController {
     }
     
     @objc func pullToRefresh(_ sender: AnyObject) {
-        self.refreshControl.beginRefreshing()
+        DispatchQueue.main.async {
+            self.refreshControl.beginRefreshing()
+        }
         viewModel.fetchData()
     }
     
