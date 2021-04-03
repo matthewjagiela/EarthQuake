@@ -11,7 +11,7 @@ protocol ViewControllerDelegate: class {
     func showErrorAlert(message: String)
 }
 class ViewController: UIViewController {
-
+    
     var data: [Feature]?
     var refreshControl = UIRefreshControl()
     let apiHandler = APIHandler()
@@ -19,8 +19,34 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        data = apiHandler.fetchEarthQuakeData()
-        print("This should come after the data print")
+        setupTableView()
+        refreshData()
+    }
+    
+    func refreshData() {
+        refreshControl.beginRefreshing()
+        let errorMessage = "We Could Not Fetch The Data At This Time"
+        apiHandler.fetchEarthQuakeData { (success, features) in
+            if success != true {
+                self.showErrorAlert(message: errorMessage)
+            } else {
+                guard let features = features else {
+                    self.showErrorAlert(message: errorMessage)
+                    return
+                }
+                self.data = features
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+            }
+        }
+        
+    }
+    
+    private func setupTableView() {
         refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
         refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -29,8 +55,7 @@ class ViewController: UIViewController {
     }
     
     @objc func pullToRefresh(_ sender: AnyObject) {
-        data = apiHandler.fetchEarthQuakeData()
-        refreshControl.endRefreshing()
+        refreshData()
         
     }
     
