@@ -17,3 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+extension Date {
+    /**
+     Take the milliseconds from API and convert them to a date object.
+     */
+    init(milliseconds: Int) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+    }
+    
+    func toString() -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy hh:mm:ss a"
+            return "\(dateFormatter.string(from: self)) UTC"
+        
+    }
+}
