@@ -11,8 +11,8 @@ class APIHandler {
     func fetchEarthQuakeData(amount: Int = 30, fetched: @escaping(_ success: Bool, _ data: [Feature]?) -> Void) {
         var eqData: [Feature]?
         guard let apiURL = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=\(amount)&eventtype=earthquake") else { return }
-        URLCache.shared.removeAllCachedResponses()
-        URLSession.shared.dataTask(with: apiURL) { data, _, error in
+        let session = URLSession(configuration: URLSessionConfiguration.ephemeral)
+        session.dataTask(with: apiURL) { data, _, error in
             if error != nil {
                 fetched(false, nil)
                 return
