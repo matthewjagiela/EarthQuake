@@ -8,25 +8,23 @@
 import Foundation
 
 class APIHandler {
-    func fetchEarthQuakeData(amount: Int = 30) -> [Feature]? {
+    func fetchEarthQuakeData(amount: Int = 30, fetched: @escaping(_ success: Bool, _ data: [Feature]?) -> Void) {
         var eqData: [Feature]?
-        guard let apiURL = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=\(amount)&eventtype=earthquake") else { return nil }
-        let completion = DispatchSemaphore(value: 0)
+        guard let apiURL = URL(string: "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=\(amount)&eventtype=earthquake") else { return }
+        URLCache.shared.removeAllCachedResponses()
         URLSession.shared.dataTask(with: apiURL) { data, _, error in
-            if let error = error {
-                print("error fetching \(error.localizedDescription)") //TODO: Change this
+            if error != nil {
+                fetched(false, nil)
                 return
             }
             if let data = data {
                 let decoder = JSONDecoder()
                 let decodableStructure = try? decoder.decode(EarthQuakeData.self, from: data)
                 eqData = decodableStructure?.features
+                fetched(true, eqData)
             } else {
-                print("error decoding data...") //TODO: Change This
+                fetched(false, nil)
             }
-            completion.signal()
         }.resume()
-        completion.wait()
-        return eqData
     }
 }
