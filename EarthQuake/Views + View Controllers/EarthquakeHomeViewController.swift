@@ -16,6 +16,7 @@ class EarthquakeHomeViewController: UIViewController {
     
     var refreshControl = UIRefreshControl()
     var viewModel: EarthquakeHomeViewModel = EarthquakeHomeViewModel()
+    lazy var refreshButton = UIBarButtonItem()
         
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -38,6 +39,11 @@ class EarthquakeHomeViewController: UIViewController {
     
     @objc func pullToRefresh(_ sender: AnyObject) {
         self.refreshControl.beginRefreshing()
+        viewModel.fetchData()
+        
+    }
+    
+    @objc func refreshData(_ sender: UIBarButtonItem) {
         viewModel.fetchData()
     }
     
@@ -80,8 +86,16 @@ extension EarthquakeHomeViewController: EarthquakeViewControllerDelegate {
         DispatchQueue.main.async {
             if online {
                 self.navigationItem.rightBarButtonItems = nil
+                self.refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshData(_:)))
+                self.navigationItem.rightBarButtonItems = [self.refreshButton]
             } else {
-                let status = UIBarButtonItem(title: "WARNING: Device Offline", style: .plain, target: nil, action: nil)
+                self.navigationItem.rightBarButtonItem = nil
+                var status = UIBarButtonItem()
+                if #available(iOS 13.0, *) {
+                    status = UIBarButtonItem(image: UIImage(systemName: "exclamationmark.icloud"), landscapeImagePhone: nil, style: .plain, target: nil, action: nil)
+                } else {
+                    status = UIBarButtonItem(title: "WARNING: Device Offline", style: .plain, target: nil, action: nil)
+                }
                 status.isEnabled = false
                 self.navigationItem.rightBarButtonItems = [status]
             }
