@@ -17,7 +17,6 @@ class EarthquakeHomeViewController: UIViewController {
     var refreshControl = UIRefreshControl()
     var viewModel: EarthquakeHomeViewModel = EarthquakeHomeViewModel()
         
-    @IBOutlet weak var statusIndicator: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +24,6 @@ class EarthquakeHomeViewController: UIViewController {
         viewModel.homeDelegate = self
         setupTableView()
         pullToRefresh(self)
-        statusIndicator.title = ""
-        statusIndicator.isEnabled = false
     }
     
     private func setupTableView() {
@@ -80,7 +77,13 @@ extension EarthquakeHomeViewController: UITableViewDelegate, UITableViewDataSour
 extension EarthquakeHomeViewController: EarthquakeViewControllerDelegate {
     func updateOnlineStatus(online: Bool) {
         DispatchQueue.main.async {
-            self.statusIndicator.title =  online ? "": "WARNING: Device offline"
+            if online {
+                self.navigationItem.rightBarButtonItems = nil
+            } else {
+                let status = UIBarButtonItem(title: "WARNING: Device Offline", style: .plain, target: nil, action: nil)
+                status.isEnabled = false
+                self.navigationItem.rightBarButtonItems = [status]
+            }
         }
     }
     
