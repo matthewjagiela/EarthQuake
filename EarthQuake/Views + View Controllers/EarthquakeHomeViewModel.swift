@@ -27,17 +27,18 @@ class EarthquakeHomeViewModel {
                 self.homeDelegate?.updateOnlineStatus(online: true)
                 let errorMessage = "We Could Not Fetch Data At This Time"
                 self.api.fetchEarthQuakeData { (success, features) in
-                    if success != true {
-                        self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
-                    } else {
-                        guard let features = features else {
-                            self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
-                            return
-                        }
-                        self.earthQuakeData = features
-                        self.homeDelegate?.refreshTableView()
+                    
+                    switch success {
+                    case .APIError(let code):
+                        print("ERROR API \(code)")
+                        self.homeDelegate?.showErrorAlert(title: "Server Error", message: "Sorry... The server is not responding. Please try again later")
+                    case .success:
+                        self.makeAPIRequest(features: features)
+                    default: self.homeDelegate?.showErrorAlert(title: nil, message: errorMessage)
                     }
+                    
                 }
+                
             } else {
                 self.online = false
                 self.homeDelegate?.updateOnlineStatus(online: false)
@@ -47,6 +48,16 @@ class EarthquakeHomeViewModel {
         }
         monitor.start(queue: queue)
     }
+    
+    private func makeAPIRequest(features: [Feature]?) {
+        guard let features = features else {
+            self.homeDelegate?.showErrorAlert(title: nil, message: "We Could Not Fetch Data At This Time")
+            return
+        }
+        self.earthQuakeData = features
+        self.homeDelegate?.refreshTableView()
+    }
+    
     
     func numberOfItems() -> Int {
         return earthQuakeData?.count ?? 0
