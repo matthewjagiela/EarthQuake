@@ -17,6 +17,7 @@ class EarthquakeHomeViewController: UIViewController {
     var refreshControl = UIRefreshControl()
     var viewModel: EarthquakeHomeViewModel = EarthquakeHomeViewModel()
     lazy var refreshButton = UIBarButtonItem()
+    var showMapButton = UIBarButtonItem()
         
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -25,6 +26,12 @@ class EarthquakeHomeViewController: UIViewController {
         viewModel.homeDelegate = self
         setupTableView()
         pullToRefresh(self)
+        if #available(iOS 13.0, *) {
+            showMapButton = UIBarButtonItem(image: UIImage(systemName: "map.fill"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(showMapView(_:)))
+        } else {
+            showMapButton = UIBarButtonItem(title: "Map", style: .plain, target: self, action: #selector(showMapView(_:)))
+        }
+        navigationItem.leftBarButtonItem = showMapButton
     }
     
     private func setupTableView() {
@@ -45,6 +52,16 @@ class EarthquakeHomeViewController: UIViewController {
     
     @objc func refreshData(_ sender: UIBarButtonItem) {
         viewModel.fetchData()
+    }
+    
+    @objc func showMapView(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "showMap", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let map = segue.destination as? MapViewController {
+            map.viewModel = MapViewModel(earthQuakeData: viewModel.getEarthquakeData() ?? [])
+        }
     }
     
 }

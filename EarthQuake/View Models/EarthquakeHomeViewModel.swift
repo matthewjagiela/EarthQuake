@@ -86,4 +86,8 @@ class EarthquakeHomeViewModel {
     func isOnline() -> Bool {
         return online
     }
+    
+    func getEarthquakeData() -> [Feature]? {
+        return earthQuakeData
+    }
 }

@@ -81,14 +81,49 @@ Title</string>
                             <constraint firstItem="JLs-K5-Jif" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jT0-rY-bg2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Earthquake" id="WV9-Jt-C6H"/>
+                    <navigationItem key="navigationItem" title="Earthquake" id="WV9-Jt-C6H">
+                        <barButtonItem key="backBarButtonItem" title="List" id="o8p-8W-RZI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JLs-K5-Jif" id="8wE-OV-fy9"/>
+                        <segue destination="nY5-Ws-xc3" kind="show" identifier="showMap" id="bn5-A3-CAQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="695.6521739130435" y="69.642857142857139"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="ZQ0-Ky-7m1">
+            <objects>
+                <viewController id="nY5-Ws-xc3" customClass="MapViewController" customModule="EarthQuake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f4q-Pz-ghS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-c2-y0R">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oDu-d0-EzR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Acj-c2-y0R" firstAttribute="leading" secondItem="oDu-d0-EzR" secondAttribute="leading" id="1gD-fy-CPQ"/>
+                            <constraint firstItem="Acj-c2-y0R" firstAttribute="centerX" secondItem="f4q-Pz-ghS" secondAttribute="centerX" id="5Pw-4m-5KX"/>
+                            <constraint firstItem="Acj-c2-y0R" firstAttribute="top" secondItem="oDu-d0-EzR" secondAttribute="top" id="kVE-ak-giF"/>
+                            <constraint firstItem="Acj-c2-y0R" firstAttribute="bottom" secondItem="oDu-d0-EzR" secondAttribute="bottom" id="qbo-OP-hQZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" largeTitleDisplayMode="never" id="kNk-je-cg0">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="ahb-Kd-w30"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="Acj-c2-y0R" id="3KO-XX-A56"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TiF-Co-83I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1450.7246376811595" y="69.642857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5to-Y6-Ize">
