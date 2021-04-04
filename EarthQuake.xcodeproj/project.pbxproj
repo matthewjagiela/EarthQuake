@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E7271A3261A1F76002F820E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7271A2261A1F76002F820E /* MapViewController.swift */; };
+		2E7271A7261A1F92002F820E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7271A6261A1F92002F820E /* MapViewModel.swift */; };
 		2E7610902617D14E00557B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E76108F2617D14E00557B13 /* AppDelegate.swift */; };
 		2E7610942617D14E00557B13 /* EarthquakeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7610932617D14E00557B13 /* EarthquakeHomeViewController.swift */; };
 		2E7610972617D14E00557B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7610952617D14E00557B13 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E7271A2261A1F76002F820E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2E7271A6261A1F92002F820E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2E76108C2617D14E00557B13 /* EarthQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E76108F2617D14E00557B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E7610932617D14E00557B13 /* EarthquakeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeHomeViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E7271A1261A1F62002F820E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				2E7E263F26191D6E009F3975 /* EarthquakeHomeViewModel.swift */,
+				2E7271A6261A1F92002F820E /* MapViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		2E7610832617D14E00557B13 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 		2E76108E2617D14E00557B13 /* EarthQuake */ = {
 			isa = PBXGroup;
 			children = (
+				2E7271A1261A1F62002F820E /* View Models */,
 				2E7E26342618DCD6009F3975 /* Other */,
 				2E7610BE2617D61600557B13 /* Models + Handlers */,
 				2E7610B82617D5CB00557B13 /* Views + View Controllers */,
@@ -100,7 +114,7 @@
 			children = (
 				2E7610952617D14E00557B13 /* Main.storyboard */,
 				2E7610932617D14E00557B13 /* EarthquakeHomeViewController.swift */,
-				2E7E263F26191D6E009F3975 /* EarthquakeHomeViewModel.swift */,
+				2E7271A2261A1F76002F820E /* MapViewController.swift */,
 			);
 			path = "Views + View Controllers";
 			sourceTree = "<group>";
@@ -239,6 +253,8 @@
 				2E7610902617D14E00557B13 /* AppDelegate.swift in Sources */,
 				2E7E264026191D6E009F3975 /* EarthquakeHomeViewModel.swift in Sources */,
 				2E7E26182617DCF9009F3975 /* Model.swift in Sources */,
+				2E7271A3261A1F76002F820E /* MapViewController.swift in Sources */,
+				2E7271A7261A1F92002F820E /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
