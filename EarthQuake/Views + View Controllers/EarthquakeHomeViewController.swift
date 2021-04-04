@@ -70,6 +70,7 @@ extension EarthquakeHomeViewController: UITableViewDelegate, UITableViewDataSour
         } else {
             showErrorAlert(title: nil, message: "Cannot Open URL because your device is offline.")
         }
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
 }
