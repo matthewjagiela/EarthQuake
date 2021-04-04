@@ -114,6 +114,7 @@ extension EarthquakeHomeViewController: EarthquakeViewControllerDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
         }
     }
 }
