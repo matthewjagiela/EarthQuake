@@ -10,12 +10,14 @@ import SafariServices
 protocol EarthquakeViewControllerDelegate: class {
     func showErrorAlert(title: String?, message: String)
     func refreshTableView()
+    func updateOnlineStatus(online: Bool)
 }
 class EarthquakeHomeViewController: UIViewController {
     
     var refreshControl = UIRefreshControl()
     var viewModel: EarthquakeHomeViewModel = EarthquakeHomeViewModel()
-    
+        
+    @IBOutlet weak var statusIndicator: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class EarthquakeHomeViewController: UIViewController {
         viewModel.homeDelegate = self
         setupTableView()
         pullToRefresh(self)
+        statusIndicator.title = ""
+        statusIndicator.isEnabled = false
     }
     
     private func setupTableView() {
@@ -36,9 +40,7 @@ class EarthquakeHomeViewController: UIViewController {
     }
     
     @objc func pullToRefresh(_ sender: AnyObject) {
-        DispatchQueue.main.async {
-            self.refreshControl.beginRefreshing()
-        }
+        self.refreshControl.beginRefreshing()
         viewModel.fetchData()
     }
     
@@ -65,13 +67,23 @@ extension EarthquakeHomeViewController: UITableViewDelegate, UITableViewDataSour
         guard let url = viewModel.getURL(index: indexPath.row) else {
             return
         }
-        let safari = SFSafariViewController(url: url, configuration: SFSafariViewController.Configuration())
-        self.present(safari, animated: true)
+        if viewModel.isOnline() {
+            let safari = SFSafariViewController(url: url, configuration: SFSafariViewController.Configuration())
+            self.present(safari, animated: true)
+        } else {
+            showErrorAlert(title: nil, message: "Cannot Open URL because your device is offline.")
+        }
         
     }
 }
 
 extension EarthquakeHomeViewController: EarthquakeViewControllerDelegate {
+    func updateOnlineStatus(online: Bool) {
+        DispatchQueue.main.async {
+            self.statusIndicator.title =  online ? "": "WARNING: Device offline"
+        }
+    }
+    
     func showErrorAlert(title: String?, message: String) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Okay", style: .default))

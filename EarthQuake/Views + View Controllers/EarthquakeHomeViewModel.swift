@@ -11,8 +11,9 @@ import Network
 class EarthquakeHomeViewModel {
     private var earthQuakeData: [Feature]?
     private let api = APIHandler()
-    let queue = DispatchQueue(label: "Monitor")
-    let monitor = NWPathMonitor()
+    private let queue = DispatchQueue(label: "Monitor")
+    private let monitor = NWPathMonitor()
+    private var online = true
     weak var homeDelegate: EarthquakeViewControllerDelegate?
     
     init(homeDelegate: EarthquakeViewControllerDelegate? = nil) {
@@ -22,6 +23,8 @@ class EarthquakeHomeViewModel {
     func fetchData() {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
+                self.online = true
+                self.homeDelegate?.updateOnlineStatus(online: true)
                 let errorMessage = "We Could Not Fetch Data At This Time"
                 self.api.fetchEarthQuakeData { (success, features) in
                     if success != true {
@@ -36,6 +39,8 @@ class EarthquakeHomeViewModel {
                     }
                 }
             } else {
+                self.online = false
+                self.homeDelegate?.updateOnlineStatus(online: false)
                 self.homeDelegate?.showErrorAlert(title: "No Internet", message: "Your device current is not connected to the internet. When your device comes back online we will refresh the data for you.")
             }
             
@@ -65,5 +70,9 @@ class EarthquakeHomeViewModel {
     func getURL(index: Int) -> URL? {
         guard let data = earthQuakeData?[index] else { return nil }
         return URL(string: data.properties.url)
+    }
+    
+    func isOnline() -> Bool {
+        return online
     }
 }
