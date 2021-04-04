@@ -81,11 +81,8 @@ Title</string>
                             <constraint firstItem="JLs-K5-Jif" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jT0-rY-bg2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Earthquake" id="WV9-Jt-C6H">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Status" id="lAc-eX-e02"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Earthquake" id="WV9-Jt-C6H"/>
                     <connections>
-                        <outlet property="statusIndicator" destination="lAc-eX-e02" id="7aD-dk-zTG"/>
                         <outlet property="tableView" destination="JLs-K5-Jif" id="8wE-OV-fy9"/>
                     </connections>
                 </viewController>
