@@ -80,6 +80,7 @@ extension EarthquakeHomeViewController: UITableViewDelegate, UITableViewDataSour
         cell.timeLabel.attributedText = NSMutableAttributedString()
             .bold("Time: ")
             .normal("\(Date(milliseconds: viewModel.getTime(index: indexPath.row)).toString())")
+        cell.annotate(annotation: Annotation(title: "", latitude: viewModel.getEarthquakeData()?[indexPath.row].geometry.coordinates[1] ?? 0.0, longitude: viewModel.getEarthquakeData()?[indexPath.row].geometry.coordinates[0] ?? 0.0))
         return cell
     }
     

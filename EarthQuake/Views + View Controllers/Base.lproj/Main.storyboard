@@ -18,20 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-K5-Jif">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuakeCell" rowHeight="102" id="2am-aD-1W4" customClass="EarthquakeTableViewCell" customModule="EarthQuake" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="102"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuakeCell" rowHeight="142" id="2am-aD-1W4" customClass="EarthquakeTableViewCell" customModule="EarthQuake" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2am-aD-1W4" id="YXT-ej-bbi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBJ-fo-WdZ">
-                                                    <rect key="frame" x="20" y="11" width="374" height="49"/>
+                                                    <rect key="frame" x="113" y="11" width="281" height="49"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="52" id="ouV-cV-2cT"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="49" id="mjP-0w-Qpf"/>
                                                     </constraints>
                                                     <string key="text">TITLE
 Title</string>
@@ -40,31 +40,39 @@ Title</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAG:  122" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YO-Ho-NIs">
-                                                    <rect key="frame" x="20" y="70" width="78" height="21"/>
+                                                    <rect key="frame" x="113" y="70" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KB5-WZ-hzA">
+                                                    <rect key="frame" x="20" y="11" width="85" height="120"/>
+                                                </mapView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: Mar 3rd 12:22 PM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-a7-YGq">
-                                                    <rect key="frame" x="212.5" y="70.5" width="181.5" height="20.5"/>
+                                                    <rect key="frame" x="113" y="110" width="181.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0YO-Ho-NIs" firstAttribute="top" secondItem="qBJ-fo-WdZ" secondAttribute="bottom" constant="10" id="1f1-Ji-v17"/>
-                                                <constraint firstItem="0YO-Ho-NIs" firstAttribute="bottom" secondItem="YXT-ej-bbi" secondAttribute="bottomMargin" id="4B3-Ty-Maf"/>
-                                                <constraint firstItem="KkP-a7-YGq" firstAttribute="bottom" secondItem="YXT-ej-bbi" secondAttribute="bottomMargin" id="73P-CK-J4K"/>
-                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" id="OPl-9E-m4u"/>
-                                                <constraint firstItem="0YO-Ho-NIs" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" id="S0g-iU-Tuk"/>
-                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="trailing" secondItem="YXT-ej-bbi" secondAttribute="trailingMargin" id="a3n-H2-VgF"/>
-                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="top" secondItem="YXT-ej-bbi" secondAttribute="topMargin" id="du9-aW-dWw"/>
-                                                <constraint firstItem="KkP-a7-YGq" firstAttribute="trailing" secondItem="YXT-ej-bbi" secondAttribute="trailingMargin" id="o9J-iC-c6v"/>
+                                                <constraint firstItem="KB5-WZ-hzA" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" id="0Z7-Hl-Zgt"/>
+                                                <constraint firstItem="KB5-WZ-hzA" firstAttribute="bottom" secondItem="YXT-ej-bbi" secondAttribute="bottomMargin" id="CFC-8e-m40"/>
+                                                <constraint firstItem="KB5-WZ-hzA" firstAttribute="top" secondItem="YXT-ej-bbi" secondAttribute="topMargin" id="QaL-mD-nR1"/>
+                                                <constraint firstItem="KkP-a7-YGq" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" constant="93" id="V5S-WX-KqC"/>
+                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" constant="93" id="WX1-Je-b6Q"/>
+                                                <constraint firstItem="0YO-Ho-NIs" firstAttribute="leading" secondItem="YXT-ej-bbi" secondAttribute="leadingMargin" constant="93" id="XMM-Ff-5Ca"/>
+                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="trailing" secondItem="YXT-ej-bbi" secondAttribute="trailingMargin" id="XRK-9t-Fq0"/>
+                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="top" secondItem="YXT-ej-bbi" secondAttribute="topMargin" id="Xzi-4P-4Bn"/>
+                                                <constraint firstItem="KkP-a7-YGq" firstAttribute="top" secondItem="0YO-Ho-NIs" secondAttribute="bottom" constant="19" id="bf8-Kg-QY8"/>
+                                                <constraint firstItem="qBJ-fo-WdZ" firstAttribute="leading" secondItem="KB5-WZ-hzA" secondAttribute="trailing" constant="8" symbolic="YES" id="fsn-ug-rwl"/>
+                                                <constraint firstItem="0YO-Ho-NIs" firstAttribute="top" secondItem="qBJ-fo-WdZ" secondAttribute="bottom" constant="10" id="xCg-q8-AIB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="KkP-a7-YGq" secondAttribute="bottom" constant="0.5" id="zkj-o1-5NP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="magLabel" destination="0YO-Ho-NIs" id="MtG-Y2-PZR"/>
+                                            <outlet property="map" destination="KB5-WZ-hzA" id="ozg-Gr-ja6"/>
                                             <outlet property="timeLabel" destination="KkP-a7-YGq" id="8xz-kL-3ml"/>
                                             <outlet property="titleLabel" destination="qBJ-fo-WdZ" id="hlp-Af-1WV"/>
                                         </connections>
@@ -75,13 +83,13 @@ Title</string>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JLs-K5-Jif" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5z5-ag-1aP"/>
-                            <constraint firstItem="JLs-K5-Jif" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JTQ-gm-YFk"/>
-                            <constraint firstItem="JLs-K5-Jif" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="OpA-Mo-tLM"/>
-                            <constraint firstItem="JLs-K5-Jif" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jT0-rY-bg2"/>
+                            <constraint firstItem="JLs-K5-Jif" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3Ll-6w-Rga"/>
+                            <constraint firstItem="JLs-K5-Jif" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FmF-UV-F0a"/>
+                            <constraint firstItem="JLs-K5-Jif" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Sh8-JS-wvU"/>
+                            <constraint firstItem="JLs-K5-Jif" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tUK-eu-SwL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Earthquake" id="WV9-Jt-C6H">
+                    <navigationItem key="navigationItem" title="Earthquakes" id="WV9-Jt-C6H">
                         <barButtonItem key="backBarButtonItem" title="List" id="o8p-8W-RZI"/>
                     </navigationItem>
                     <connections>
