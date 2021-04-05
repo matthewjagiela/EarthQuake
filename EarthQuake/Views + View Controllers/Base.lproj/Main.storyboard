@@ -89,9 +89,7 @@ Title</string>
                             <constraint firstItem="JLs-K5-Jif" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tUK-eu-SwL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Earthquakes" id="WV9-Jt-C6H">
-                        <barButtonItem key="backBarButtonItem" title="List" id="o8p-8W-RZI"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Earthquakes" id="WV9-Jt-C6H"/>
                     <connections>
                         <outlet property="tableView" destination="JLs-K5-Jif" id="8wE-OV-fy9"/>
                         <segue destination="nY5-Ws-xc3" kind="show" identifier="showMap" id="bn5-A3-CAQ"/>

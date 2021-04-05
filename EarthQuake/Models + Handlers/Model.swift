@@ -11,13 +11,13 @@ class EarthQuakeData: Decodable {
     var type: String
     var metadata: Metadata
     var features: [Feature]?
-    
+
     init(type: String, metadata: Metadata, features: [Feature]?) {
         self.type = type
         self.metadata = metadata
         self.features = features
     }
-    
+
 }
 
 // MARK: - Feature
@@ -54,7 +54,7 @@ class Properties: Decodable {
     var url: String
     var title: String
     var alert: String?
-    
+
     init(mag: Double, place: String, time: Int, url: String, title: String, alert: String?) {
         self.mag = mag
         self.place = place
@@ -64,7 +64,6 @@ class Properties: Decodable {
         self.alert = alert
     }
 }
-
 
 // MARK: - Metadata
 class Metadata: Decodable {

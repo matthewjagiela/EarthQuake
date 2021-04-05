@@ -25,37 +25,37 @@ extension Date {
     init(milliseconds: Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
-    
+
     func toString() -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy h:mm a"
             return "\(dateFormatter.string(from: self)) UTC"
-        
+
     }
 }
 
 extension NSMutableAttributedString {
-    var fontSize:CGFloat { return 14 }
-    var boldFont:UIFont { return UIFont(name: "AvenirNext-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize) }
-    var normalFont:UIFont { return UIFont(name: "AvenirNext-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)}
-    
-    func bold(_ value:String) -> NSMutableAttributedString {
-        
-        let attributes:[NSAttributedString.Key : Any] = [
-            .font : boldFont
+    var fontSize: CGFloat { return 14 }
+    var boldFont: UIFont { return UIFont.boldSystemFont(ofSize: fontSize) }
+    var normalFont: UIFont { return UIFont.systemFont(ofSize: fontSize)}
+
+    func bold(_ value: String) -> NSMutableAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: boldFont
         ]
-        
-        self.append(NSAttributedString(string: value, attributes:attributes))
+
+        self.append(NSAttributedString(string: value, attributes: attributes))
         return self
     }
-    
-    func normal(_ value:String) -> NSMutableAttributedString {
-        
-        let attributes:[NSAttributedString.Key : Any] = [
-            .font : normalFont,
+
+    func normal(_ value: String) -> NSMutableAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: normalFont
         ]
-        
-        self.append(NSAttributedString(string: value, attributes:attributes))
+
+        self.append(NSAttributedString(string: value, attributes: attributes))
         return self
     }
 }
