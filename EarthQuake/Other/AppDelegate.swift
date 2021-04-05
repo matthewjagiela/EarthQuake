@@ -28,7 +28,7 @@ extension Date {
     
     func toString() -> String {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yy h:mm:ss a"
+            dateFormatter.dateFormat = "MM/dd/yy h:mm a"
             return "\(dateFormatter.string(from: self)) UTC"
         
     }
