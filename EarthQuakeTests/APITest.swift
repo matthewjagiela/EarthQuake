@@ -22,8 +22,8 @@ class APITest: XCTestCase {
             }
             apiExpectation.fulfill()
         }
-        
+
         waitForExpectations(timeout: 5)
     }
-    
+
 }
