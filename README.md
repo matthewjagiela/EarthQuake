@@ -4,8 +4,7 @@ Hello to whoever gets to check this project out!
 
 A few things to note: 
 
-1: If you are not running this on an actual device (or a M1 mac running the simulator), the application may seem a bit laggy. However, this is not the case it simply is the emulation layer. For the best experience I recommend changing the team in the project settings and running it on an actual iPhone or iPad. 
-
+1: If you are not running this on an actual device (or a M1 mac running the simulator), the map screen and maps on the table view may have a slight lag. However, this is not the case it simply happens because the emulation layer. For the best experience I recommend changing the team in the project settings and running it on an actual iPhone or iPad. 
 
 2: I tried to keep a linear history of everything I did. This means you can trace back the project merge by merge easily to see how things were added and changed during the entire development process.
 
