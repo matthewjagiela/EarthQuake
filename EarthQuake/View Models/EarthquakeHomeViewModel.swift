@@ -93,4 +93,14 @@ class EarthquakeHomeViewModel {
     func getEarthquakeData() -> [Feature]? {
         return earthQuakeData
     }
+    
+    func getMapAnnotation(index: Int) -> Annotation {
+        guard let earthquake = earthQuakeData else {
+            print("Earthquake Home View Model: There was an error setting annotations")
+            return Annotation(title: "", latitude: 0, longitude: 0)
+            
+        }
+        return Annotation(title: "", latitude: earthquake[index].geometry.coordinates[1], longitude: earthquake[index].geometry.coordinates[0])
+       
+    }
 }
