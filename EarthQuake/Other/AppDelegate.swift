@@ -32,6 +32,12 @@ extension Date {
             return "\(dateFormatter.string(from: self)) UTC"
 
     }
+    
+    func dateFrom(daysAway: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: (-1 * (daysAway - 1)), to: Date()) ?? Date())
+    }
 }
 
 extension NSMutableAttributedString {
