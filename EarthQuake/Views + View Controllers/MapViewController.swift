@@ -47,7 +47,6 @@ extension MapViewController: MKMapViewDelegate {
             view = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: "reuseIdentifier")
         }
         view?.annotation = annotation
-        view?.displayPriority = .required
         return view
     }
 

@@ -11,7 +11,7 @@ class APITest: XCTestCase {
     let api = APIHandler()
     func testAPIWorking() {
         let apiExpectation = expectation(description: "APIResponse")
-        api.fetchEarthQuakeData { (response, data) in
+        api.fetchEarthQuakeData(daysAway: DatesForFilter.Today) { (response, data) in
             switch response {
             case .success:
                 XCTAssertNotNil(data)

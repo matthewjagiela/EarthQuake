@@ -8,12 +8,20 @@
 import Foundation
 import Network
 
+enum DatesForFilter: Int {
+    case ThirtyDays = 30
+    case FifteenDays = 15
+    case Week = 7
+    case Today = 1
+}
+
 class EarthquakeHomeViewModel {
     private var earthQuakeData: [Feature]?
     private let api = APIHandler()
     private let queue = DispatchQueue(label: "Monitor")
     private let monitor = NWPathMonitor()
     private var online = true
+    var dateFilter: DatesForFilter = .FifteenDays
     weak var homeDelegate: EarthquakeViewControllerDelegate?
 
     init(homeDelegate: EarthquakeViewControllerDelegate? = nil) {
@@ -26,15 +34,14 @@ class EarthquakeHomeViewModel {
                 self.online = true
                 self.homeDelegate?.updateOnlineStatus(online: true)
                 let errorMessage = "We Could Not Fetch Data At This Time"
-                self.api.fetchEarthQuakeData { (success, features) in
-
+                self.api.fetchEarthQuakeData(daysAway: self.dateFilter) { (success, features) in
                     switch success {
                     case .APIError(let code):
                         print("ERROR API \(code)")
                         self.homeDelegate?.showErrorAlert(title: "Server Error",
                                                           message: "Sorry... The server is not responding. Please try again later")
                     case .success:
-                        self.makeAPIRequest(features: features)
+                        self.successfulAPIRequest(features: features)
                     default: self.homeDelegate?.showErrorAlert(title: nil,
                                                                message: errorMessage)
                     }
@@ -52,7 +59,7 @@ class EarthquakeHomeViewModel {
         monitor.start(queue: queue)
     }
 
-    private func makeAPIRequest(features: [Feature]?) {
+    private func successfulAPIRequest(features: [Feature]?) {
         guard let features = features else {
             self.homeDelegate?.showErrorAlert(title: nil,
                                               message: "We Could Not Fetch Data At This Time")
@@ -73,7 +80,7 @@ class EarthquakeHomeViewModel {
 
     func getMagnitude(index: Int) -> Double {
         guard let data = earthQuakeData?[index] else { return 0.0 }
-        return data.properties.mag
+        return data.properties.mag ?? 0
     }
 
     func getTime(index: Int) -> Int {
@@ -102,5 +109,10 @@ class EarthquakeHomeViewModel {
         }
         return Annotation(title: "", latitude: earthquake[index].geometry.coordinates[1], longitude: earthquake[index].geometry.coordinates[0])
        
+    }
+    
+    func setFilterAndRefresh(filter: DatesForFilter) {
+        dateFilter = filter
+        self.fetchData()
     }
 }
